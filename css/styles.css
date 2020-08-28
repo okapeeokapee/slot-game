@@ -12,6 +12,8 @@ main{
   border: 4px solid#fff;
   border-radius: 12px;
   margin: 16px auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .panel img{
