@@ -13,17 +13,18 @@
 
       this.stop=document.createElement('div');
       this.stop.textContent='STOP';
-      this.stop.classList.add('stop');
+      this.stop.classList.add('stop','inactive');
       this.stop.addEventListener('click',()=>{
         if(this.stop.classList.contains('inactive')){
           return;
         }
         this.stop.classList.add('inactive');
         clearTimeout(this.timeoutId);
-
         panelsLeft--;
 
         if(panelsLeft===0){
+          spin.classList.remove('inactive');
+          panelsLeft=3;
           checkResult();
         };
       });
@@ -40,7 +41,6 @@
         'img/seven.png',
         'img/bell.png',
         'img/cherry.png',
-        'img/ramen.jpg',
       ];
       return images[Math.floor(Math.random()*images.length)];
       }
@@ -63,6 +63,11 @@
 
     unmatch(){
       this.img.classList.add('unmatched');
+    }
+
+    activate(){
+      this.img.classList.remove('unmatched');
+      this.stop.classList.remove('inactive');
     }
   }
 
@@ -93,6 +98,7 @@
     }
     spin.classList.add('inactive');
     panels.forEach(panel =>{
+      panel.activate();
       panel.spin();
     });
   });
