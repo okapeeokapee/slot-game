@@ -34,6 +34,7 @@ main{
 }
 .stop{
   margin: auto;
+  padding-top: 10px;
   cursor: pointer;
   width: 100px;
   height: 40px;
